@@ -28,9 +28,9 @@ I have tested this with the following files in a directory which was then mounte
 ### smtpd.conf
 
     listen on  0.0.0.0
-    table secrets file:/etc/smtpd/conf/secrets
-    table vdoms file:/etc/smtpd/conf/virtual-domains.txt
-    table vusers file:/etc/smtpd/conf/virtual-users.txt
+    table secrets file:/etc/smtpd/secrets
+    table vdoms file:/etc/smtpd/virtual-domains.txt
+    table vusers file:/etc/smtpd/virtual-users.txt
     accept from any for domain <vdoms> virtual <vusers> deliver to mbox
     accept from local for any relay via smtps+auth://smtpauth@mail.btinternet.com:465 auth <secrets>
 
