@@ -30,7 +30,11 @@ RUN mkdir -p /home/user/src \
     && makepkg --noconfirm --skippgpcheck -s \
     && sudo pacman -U --noconfirm pacaur-*.pkg.tar.xz
 
-RUN pacaur -S opensmtpd-extras
+RUN pacaur -S opensmtpd-extras pyzor razor \
+    && mkdir -p /var/lib/spamassassin/.pyzor \
+    && chmod 700 /var/lib/spamassassin/.pyzor  \
+    && echo "public.pyzor.org:24441" > /var/lib/spamassassin/.pyzor/servers \
+    && chmod 600 /var/lib/spamassassin/.pyzor/servers
 
 USER root
 

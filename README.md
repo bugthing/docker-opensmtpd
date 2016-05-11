@@ -28,6 +28,12 @@ I have tested this with the following files in a directory which was then mounte
 ### smtpd.conf
 
     listen on  0.0.0.0
+    filter filter-pause pause
+    filter filter-dnsbl-sorbs dnsbl
+    filter filter-dnsbl-spamcop dnsbl "-h bl.spamcop.net"
+    filter filter-dnsbl-spamhaus dnsbl "-h sbl-xbl.spamhaus.org"
+    filter filter-spamassassin spamassassin "-s reject"
+    filter all chain filter-pause filter-dnsbl-sorbs filter-dnsbl-spamcop filter-dnsbl-spamhaus filter-spamassassin
     table secrets file:/etc/smtpd/secrets
     table vdoms file:/etc/smtpd/virtual-domains.txt
     table vusers file:/etc/smtpd/virtual-users.txt
