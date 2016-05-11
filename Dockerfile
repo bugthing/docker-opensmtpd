@@ -5,7 +5,7 @@ RUN sed -i "s/^SigLevel.*/SigLevel = Never/g" /etc/pacman.conf \
     && pacman-key --refresh-keys \
     && pacman --noconfirm -Syyuu \
     && pacman-db-upgrade
-RUN pacman -S --noconfirm --quiet opensmtpd
+RUN pacman -S --noconfirm --quiet opensmtpd spamassassin
 VOLUME ["/etc/smtpd"]
 EXPOSE 25
 CMD ["/usr/bin/smtpd", "-d"]
